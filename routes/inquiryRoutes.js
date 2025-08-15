@@ -1,7 +1,7 @@
-const express =   require("express");
-const nodemailer =   require("nodemailer");
-const Inquiry =   require("../models/Inquiry.js");
-const dotenv =   require("dotenv");
+const express = require("express");
+const nodemailer = require("nodemailer");
+const Inquiry = require("../models/Inquiry.js");
+const dotenv = require("dotenv");
 
 dotenv.config();
 const router = express.Router();
@@ -43,12 +43,18 @@ router.post("/", async (req, res) => {
       to: email,
       subject: "Thanks for contacting Shodavli",
       html: `
-        <h2>Dear ${name},</h2>
-        <p>We have received your inquiry. Our team will get back to you soon.</p>
-        <p><strong>Your Details:</strong></p>
-        <p>Email: ${email}</p>
-        <p>Phone: ${phone}</p>
-      `
+ 
+  
+  <h2>Dear ${name},</h2>
+   <p>We have received your request. Our team will review it and get back to you soon. Thank you for your submission.</p>
+
+  <br>
+  <p>Regards,</p>
+  <p><strong>Shodhavali</strong><br>
+  An International Multidisciplinary Research Journal<br>
+  <a href="https://www.shodhavali.com" target="_blank">www.shodhavali.com</a></p>
+`
+
     });
 
     res.status(200).json({ message: "Inquiry submitted and emails sent" });
@@ -68,4 +74,4 @@ router.get("/", async (req, res) => {
   }
 });
 
-module.exports =  router;
+module.exports = router;
