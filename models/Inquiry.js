@@ -8,10 +8,9 @@ const inquirySchema = new mongoose.Schema({
   address: { type: String},
   title: { type: String },
   abstract: { type: String },
-
-  // We'll store the manuscript as a file path or URL
-  manuscriptPath: { type: String }, // e.g., '/uploads/manuscript.docx'
-
+  fileName : {type: String},
+  status: {type: String, default: "pending"},
+  manuscriptPath: { type: String },
   date: { type: Date, default: Date.now }
 });
 
