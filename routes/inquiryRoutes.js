@@ -42,9 +42,11 @@ router.post("/", async (req, res) => {
     await transporter.sendMail({
       from: process.env.ADMIN_EMAIL,
       to: email,
-      subject: "Thanks for contacting Shodavli",
+      subject: "Thanks for contacting Shodhavali",
       html: `
           <h2>Dear ${name},</h2>
+           <p><strong>Email:</strong> ${email}</p>
+           <p><strong>Phone:</strong> ${phone}</p>
            <p>We have received your request. Our team will review it and get back to you soon. Thank you for your submission.</p>
           <br>
           <p>Regards,</p>
