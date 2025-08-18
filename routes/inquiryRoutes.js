@@ -37,6 +37,8 @@ router.post("/", async (req, res) => {
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Tracking Number:</strong> ${trackingNumber}</p>
+        
       `
     });
 
@@ -49,6 +51,7 @@ router.post("/", async (req, res) => {
           <h2>Dear ${name},</h2>
            <p><strong>Email:</strong> ${email}</p>
            <p><strong>Phone:</strong> ${phone}</p>
+           <p><strong>Tracking Number:</strong> ${trackingNumber}</p>
            <p>We have received your request. Our team will review it and get back to you soon. Thank you for your submission.</p>
           <br>
           <p>Regards,</p>
