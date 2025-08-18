@@ -91,5 +91,13 @@ router.get("/", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch inquiries" });
   }
 });
+router.put("/:id", async (req, res) => {
+  try {
+    const inquiry = await Inquiry.findByIdAndUpdate(req.params.id, req.body);
+    res.json(inquiry);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch inquiries" });
+  }
+});
 
 module.exports = router;
