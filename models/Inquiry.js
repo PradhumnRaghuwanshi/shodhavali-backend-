@@ -11,6 +11,7 @@ const inquirySchema = new mongoose.Schema({
   fileName : {type: String},
   status: {type: String, default: "pending"},
   manuscriptPath: { type: String },
+  trackingNumber: {type: String},
   date: { type: Date, default: Date.now }
 });
 

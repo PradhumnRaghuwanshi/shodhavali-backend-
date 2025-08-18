@@ -10,6 +10,8 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const { name, email, phone } = req.body;
   const newEnquiry = new Inquiry(req.body)
+  const trackingNumber = "SHODH-" + Date.now(); // simple unique ID
+  newEnquiry.trackingNumber = trackingNumber
   await newEnquiry.save()
   if (!name || !email || !phone) {
     return res.status(400).json({ error: "Name, email, and phone are required" });
@@ -62,6 +64,23 @@ router.post("/", async (req, res) => {
     res.status(500).json({ error: "Failed to send emails" });
   }
 });
+
+router.get("/track/:trackingNumber", async (req, res) => {
+  try {
+    const { trackingNumber } = req.params;
+    const submission = await Inquiry.findOne({ trackingNumber });
+
+    if (!submission) {
+      return res.status(404).json({ message: "No record found" });
+    }
+
+    res.json(submission);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 // GET - List all inquiries (for Admin Panel)
 router.get("/", async (req, res) => {
